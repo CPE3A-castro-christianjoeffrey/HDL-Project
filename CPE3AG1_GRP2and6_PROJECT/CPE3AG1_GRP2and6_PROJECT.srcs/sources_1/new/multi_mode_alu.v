@@ -7,7 +7,6 @@ module multi_mode_alu #()(result, carry, zero, overflow, negative, A, B, opcode)
     input [3:0] opcode;
     output reg [N-1:0] result;
     output reg carry, zero, overflow, negative;
-
     reg [N:0] temp;
 
     always@(A or B or opcode)begin
