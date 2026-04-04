@@ -10,7 +10,7 @@ module multi_mode_alu #()(result, carry, zero, overflow, negative, A, B, opcode)
 
     reg [N:0] temp;
 
-    always@(A or B or opcode)
+    always@(A or B or opcode)begin
         case(opcode)
             4'b0000:begin //* ADD
                 temp = A + B;
@@ -32,26 +32,31 @@ module multi_mode_alu #()(result, carry, zero, overflow, negative, A, B, opcode)
                 result = A ^ B;
             4'b0101://* NOT --- A only
                 result = ~A;
-            4'b0110://* SHL --- A only
+            4'b0110:begin//* SHL --- A only
                 temp = A << 1;
                 carry = A[N-1];
-            4'b0111//* SHR --- A only
+            end
+            4'b0111:begin//* SHR --- A only
                 temp = A >> 1;
-                carry = A[0]
-            4'b1000//* INC --- A only
+                carry = A[0];
+            end
+            4'b1000:begin//* INC --- A only
                 temp = A + 1;
                 result = temp[N-1];
                 carry = temp[N];
-                overflow = (A[N-1] == 1'b0) &&(A[N-1] != 1'b0)
-            4'b1001//* DEC --- A only
+                overflow = (A[N-1] == 1'b0) &&(A[N-1] != 1'b0);
+            end
+            4'b1001:begin//* DEC --- A only
                 temp = A + 1;
                 result = temp[N-1];
                 carry = temp[N];
-                overflow = (A[N-1] == 1'b1) &&(A[N-1] != 1'b1)
+                overflow = (A[N-1] == 1'b1) &&(A[N-1] != 1'b1);
+            end
         endcase
 
-    //* Flags
-    zero = (result == 0);
-    negative = result[N-1];
+        //* Flags
+        zero = (result == 0);
+        negative = result[N-1];
+    end
 
 endmodule
