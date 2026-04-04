@@ -1,0 +1,57 @@
+`timescale 1ns / 1ns
+
+module multi_mode_alu #()(result, carry, zero, overflow, negative, A, B, opcode);
+    parameter N = 8;
+    
+    input [N-1:0] A,B;
+    input [3:0] opcode;
+    output reg [N-1:0] result;
+    output reg carry, zero, overflow, negative;
+
+    reg [N:0] temp;
+
+    always@(A or B or opcode)
+        case(opcode)
+            4'b0000:begin //* ADD
+                temp = A + B;
+               result = temp[N-1:0];
+                carry = temp[N];
+                overflow = (A[N-1] == B[N-1]) && (result[N-1] != A[N-1]);
+            end
+            4'b0001:begin//* SUB
+                temp = A - B;
+                result = temp[N-1:0];
+                carry = temp[N];
+                overflow = (A[N-1] != B[N-1]) && (result[N-1] != A[N-1]);
+            end
+            4'b0010://* AND
+                result = A & B;
+            4'b0011://* OR
+                result = A | B;
+            4'b0100://* XOR
+                result = A ^ B;
+            4'b0101://* NOT --- A only
+                result = ~A;
+            4'b0110://* SHL --- A only
+                temp = A << 1;
+                carry = A[N-1];
+            4'b0111//* SHR --- A only
+                temp = A >> 1;
+                carry = A[0]
+            4'b1000//* INC --- A only
+                temp = A + 1;
+                result = temp[N-1];
+                carry = temp[N];
+                overflow = (A[N-1] == 1'b0) &&(A[N-1] != 1'b0)
+            4'b1001//* DEC --- A only
+                temp = A + 1;
+                result = temp[N-1];
+                carry = temp[N];
+                overflow = (A[N-1] == 1'b1) &&(A[N-1] != 1'b1)
+        endcase
+
+    //* Flags
+    zero = (result == 0);
+    negative = result[N-1];
+
+endmodule
