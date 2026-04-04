@@ -13,7 +13,7 @@ module multi_mode_alu #()(result, carry, zero, overflow, negative, A, B, opcode)
         case(opcode)
             4'b0000:begin //* ADD
                 temp = A + B;
-               result = temp[N-1:0];
+                result = temp[N-1:0];
                 carry = temp[N];
                 overflow = (A[N-1] == B[N-1]) && (result[N-1] != A[N-1]);
             end
