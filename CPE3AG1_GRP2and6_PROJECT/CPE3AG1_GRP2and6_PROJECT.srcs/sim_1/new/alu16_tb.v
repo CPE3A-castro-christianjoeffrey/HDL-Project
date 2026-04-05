@@ -12,9 +12,7 @@ module alu16_tb();
     multi_mode_alu #(N) uut(result, carry, zero, overflow, negative, A, B, opcode);
 
     initial begin
-        $monitor("opcode=%b A=%d B=%d result=%d carry=%b zero=%b overflow=%b negative=%b",
-                  A, B, opcode, result, carry, zero, overflow, negative);
-
+        
         //* ADD
         opcode = 4'b0000; A = 16'h0001; B = 16'h0002; #10;
         opcode = 4'b0000; A = 16'h8000; B = 16'h8000; #10;
