@@ -1,7 +1,7 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
 "../../../../CPE3AG1_GRP2and6_PROJECT.srcs/sources_1/new/multi_mode_alu.v" \
-"../../../../CPE3AG1_GRP2and6_PROJECT.srcs/sim_1/new/alu_tb.v" \
+"../../../../CPE3AG1_GRP2and6_PROJECT.srcs/sim_1/new/alu16_tb.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"
