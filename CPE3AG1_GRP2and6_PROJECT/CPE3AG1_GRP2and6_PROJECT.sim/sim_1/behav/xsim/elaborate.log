@@ -4,13 +4,11 @@ Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3755] too many parameters for module instance 'uut' [C:/Users/TISOY/Documents/CJ/School/Bs CpE/3rd Year/Acads/2nd_Sem/HDL/1 - Codes/Project/HDL-Project/CPE3AG1_GRP2and6_PROJECT/CPE3AG1_GRP2and6_PROJECT.srcs/sim_1/new/alu_tb.v:12]
-WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 8 for port 'result' [C:/Users/TISOY/Documents/CJ/School/Bs CpE/3rd Year/Acads/2nd_Sem/HDL/1 - Codes/Project/HDL-Project/CPE3AG1_GRP2and6_PROJECT/CPE3AG1_GRP2and6_PROJECT.srcs/sim_1/new/alu_tb.v:12]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.multi_mode_alu
+Compiling module xil_defaultlib.multi_mode_alu(N=4)
 Compiling module xil_defaultlib.alu4_tb
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot alu4_tb_behav

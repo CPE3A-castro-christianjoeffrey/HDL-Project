@@ -1,7 +1,6 @@
 `timescale 1ns / 1ns
 
-module multi_mode_alu #()(result, carry, zero, overflow, negative, A, B, opcode);
-    parameter N = 8;
+module multi_mode_alu #(parameter N = 8)(result, carry, zero, overflow, negative, A, B, opcode);
     
     input [N-1:0] A,B;
     input [3:0] opcode;
@@ -10,6 +9,11 @@ module multi_mode_alu #()(result, carry, zero, overflow, negative, A, B, opcode)
     reg [N:0] temp;
 
     always@(A or B or opcode)begin
+
+        result = 0;
+        carry = 0;
+        overflow = 0;
+
         case(opcode)
             4'b0000:begin //* ADD
                 temp = A + B;
@@ -32,11 +36,11 @@ module multi_mode_alu #()(result, carry, zero, overflow, negative, A, B, opcode)
             4'b0101://* NOT --- A only
                 result = ~A;
             4'b0110:begin//* SHL --- A only
-                temp = A << 1;
+                result = A << 1;
                 carry = A[N-1];
             end
             4'b0111:begin//* SHR --- A only
-                temp = A >> 1;
+                result = A >> 1;
                 carry = A[0];
             end
             4'b1000:begin//* INC --- A only
