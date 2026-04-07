@@ -45,13 +45,13 @@ module multi_mode_alu #(parameter N = 8)(result, carry, zero, overflow, negative
             end
             4'b1000:begin//* INC --- A only
                 temp = A + 1;
-                result = temp[N-1];
+                result = temp[N-1:0];
                 carry = temp[N];
                 overflow = (A[N-1] == 1'b0) &&(A[N-1] != 1'b0);
             end
             4'b1001:begin//* DEC --- A only
-                temp = A + 1;
-                result = temp[N-1];
+                temp = A - 1;
+                result = temp[N-1:0];
                 carry = temp[N];
                 overflow = (A[N-1] == 1'b1) &&(A[N-1] != 1'b1);
             end
