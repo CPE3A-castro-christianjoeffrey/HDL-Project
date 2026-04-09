@@ -29,6 +29,7 @@ module alu16_tb();
 
         //* AND
         opcode = 4'b0010; A = 16'hff00; B = 16'h00ff; #10;
+        opcode = 4'b0010; A = 16'hffff; B = 16'h0f0f; #10;   
 
 
         //* OR
@@ -38,42 +39,42 @@ module alu16_tb();
 
         //* XOR
         opcode = 4'b0100; A = 16'hffff; B = 16'hffff; #10;
-        opcode = 4'b0011; A = 16'h0010; B = 16'h0d00; #10;
+        opcode = 4'b0100; A = 16'hAAAA; B = 16'h5555; #10;   
 
 
         //* NOT
-        opcode = 4'b0101; A = 16'h0000; #10;
-        opcode = 4'b0101; A = 16'hffff; #10;
+        opcode = 4'b0101; A = 16'h0000; B = 0; #10;          
+        opcode = 4'b0101; A = 16'hffff; B = 0; #10;
+        opcode = 4'b0101; A = 16'hAAAA; B = 0; #10;          
 
 
         //* SHL
-        opcode = 4'b0110; A = 16'h4000; #10;
-        opcode = 4'b0110; A = 16'h8000; #10;
-        opcode = 4'b0110; A = 16'hffff; #10;
+        opcode = 4'b0110; A = 16'h4000; B = 0; #10;          
+        opcode = 4'b0110; A = 16'h8000; B = 0; #10;
+        opcode = 4'b0110; A = 16'hffff; B = 0; #10;
 
 
         //* SHR
-        opcode = 4'b0111; A = 16'h0002; #10;
-        opcode = 4'b0111; A = 16'h0001; #10;
-        opcode = 4'b0111; A = 16'h8000; #10;
+        opcode = 4'b0111; A = 16'h0002; B = 0; #10;          
+        opcode = 4'b0111; A = 16'h0001; B = 0; #10;
+        opcode = 4'b0111; A = 16'h8000; B = 0; #10;
 
 
         //* INC
-        opcode = 4'b1000; A = 16'h8000; #10;
-        opcode = 4'b1000; A = 16'h7fff; #10;
-        opcode = 4'b1000; A = 16'hffff; #10;
-        opcode = 4'b1000; A = 16'h8000; #10;
+        opcode = 4'b1000; A = 16'h8000; B = 0; #10;          
+        opcode = 4'b1000; A = 16'h7fff; B = 0; #10;
+        opcode = 4'b1000; A = 16'hffff; B = 0; #10;
+        opcode = 4'b1000; A = 16'h8000; B = 0; #10;
 
 
         //* DEC
-        opcode = 4'b1001; A = 16'h0001; #10;
-        opcode = 4'b1001; A = 16'h0000; #10;
-        opcode = 4'b1001; A = 16'h8000; #10;
-        opcode = 4'b1001; A = 16'h8001; #10;
+        opcode = 4'b1001; A = 16'h0001; B = 0; #10;          
+        opcode = 4'b1001; A = 16'h0000; B = 0; #10;
+        opcode = 4'b1001; A = 16'h8000; B = 0; #10;
+        opcode = 4'b1001; A = 16'h8001; B = 0; #10;
 
         #10 $finish;
 
     end
-
 
 endmodule
